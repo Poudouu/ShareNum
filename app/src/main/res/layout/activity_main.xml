@@ -19,52 +19,11 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/connet_bt"
+        android:text="@string/send_phone_number"
         android:id="@+id/bt_connect"
-        android:onClick="fct_connect_bt"
+        android:onClick="send_file_in_bt"
         android:layout_below="@+id/bt_status"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="29dp" />
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/disconnet_bt"
-        android:id="@+id/bt_disconnect"
-        android:onClick="fct_disconnect_bt"
-        android:layout_below="@+id/bt_connect"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp" />
-
-    <TextView android:text="Device1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:id="@+id/accessible_device1"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView android:text="Device2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:id="@+id/accessible_device2"
-        android:layout_below="@+id/accessible_device1"
-        android:layout_alignLeft="@+id/accessible_device1"
-        android:layout_alignStart="@+id/accessible_device1"
-        android:layout_marginTop="29dp" />
-
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Connect to device1"
-        android:id="@+id/Connect_to_remote_device_1"
-        android:onClick="fct_connect_to_device_1"
-        android:layout_below="@+id/accessible_device2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="44dp" />
 </RelativeLayout>
