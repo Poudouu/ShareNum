@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,15 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.nio.CharBuffer;
 import java.util.List;
 
 
@@ -24,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
     String toastText = "";
     private int DISCOVERY_REQUEST = 1;
     int i = 0;
+    File file;
+
+    OutputStreamWriter osw = null;
+    InputStreamReader isr = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +46,35 @@ public class MainActivity extends AppCompatActivity {
 
         flag_bt_on = check_bluetooth_status();
         bt_was_on_at_startup=flag_bt_on;
+
+        read_infos();
+    }
+
+    public void fct_register_infos(View vieuw){
+        Intent intent = new Intent(this, ContactInfos.class);
+        startActivity(intent);
+    }
+
+    public void read_infos(){
+        FileInputStream fileInputStream=null;
+        byte [] inputBuffer = new byte[1024];
+        file = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), "contact_info1.vcf");
+        try {
+            fileInputStream = new FileInputStream(file);
+            fileInputStream.read(inputBuffer);
+            fileInputStream.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            String infoStringRead = new String(inputBuffer, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public boolean check_bluetooth_status() {
@@ -62,9 +105,9 @@ public class MainActivity extends AppCompatActivity {
         flag_bt_on = check_bluetooth_status();
 
         Intent i = new Intent(Intent.ACTION_SEND);
-        //i.setType("text/plain");
-        i.setType("image/jpeg");
-        File f = new File (Environment.getExternalStorageDirectory(), "DCIM/fuck_you.jpg");
+        i.setType("text/plain");
+        //i.setType("image/jpeg");
+        File f = new File(Environment.getExternalStorageDirectory(), "contact_info1.vcf");
         i.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(f));
         PackageManager pm = getPackageManager();
         List<ResolveInfo> appsList=pm.queryIntentActivities(i, 0);

@@ -3,4 +3,10 @@
     <string name="bt_status">Bluetooth status</string>
     <string name="send_phone_number">Send phone number</string>
     <string name="disconnet_bt">Disonnect Bluetooth</string>
+    <string name="first_name">First name:</string>
+    <string name="last_name">Last name:</string>
+    <string name="organisation">Organisation:</string>
+    <string name="phone_number">Phone number:</string>
+    <string name="email">Email address:</string>
+    <string name="save_infos">Save</string>
 </resources>

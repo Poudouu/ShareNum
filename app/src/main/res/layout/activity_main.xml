@@ -26,4 +26,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="29dp" />
 
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Register datas"
+        android:id="@+id/register_informations"
+        android:onClick="fct_register_infos"
+        android:layout_below="@+id/bt_connect"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp" />
+
 </RelativeLayout>
