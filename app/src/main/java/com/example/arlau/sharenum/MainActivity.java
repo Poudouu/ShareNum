@@ -4,77 +4,45 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.content.res.AssetManager;
 import android.net.Uri;
+import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.nio.CharBuffer;
 import java.util.List;
-
-
 
 public class MainActivity extends AppCompatActivity {
 
     BluetoothAdapter btAdapter;
     boolean flag_bt_on = false;
     boolean bt_was_on_at_startup=false;
-    String toastText = "";
     private int DISCOVERY_REQUEST = 1;
-    int i = 0;
-    File file;
+    CountDownTimer Count;
 
-    OutputStreamWriter osw = null;
-    InputStreamReader isr = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
         flag_bt_on = check_bluetooth_status();
         bt_was_on_at_startup=flag_bt_on;
 
-        read_infos();
     }
 
     public void fct_register_infos(View vieuw){
         Intent intent = new Intent(this, ContactInfos.class);
         startActivity(intent);
-    }
-
-    public void read_infos(){
-        FileInputStream fileInputStream=null;
-        byte [] inputBuffer = new byte[1024];
-        file = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), "contact_info1.vcf");
-        try {
-            fileInputStream = new FileInputStream(file);
-            fileInputStream.read(inputBuffer);
-            fileInputStream.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            String infoStringRead = new String(inputBuffer, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
     }
 
     public boolean check_bluetooth_status() {
@@ -85,12 +53,12 @@ public class MainActivity extends AppCompatActivity {
             bt_status = btAdapter.isEnabled();
         } catch (java.lang.NullPointerException e) {
             e.printStackTrace();
-            statusUpdate.setText("Bluetooth not supported by the device!");
+            statusUpdate.setText("Bluetooth not supported by the device!!!");
         }
         if (bt_status) {
-            statusUpdate.setText("Bluetooth is activated");
+            statusUpdate.setText("");
         } else {
-            statusUpdate.setText("Bluetooth is not activated");
+            statusUpdate.setText("");
         }
         return bt_status;
     }
@@ -99,14 +67,13 @@ public class MainActivity extends AppCompatActivity {
     public void send_file_in_bt(View vieuw) {
 
         if(!flag_bt_on) {
-            String actionRequestEnable=BluetoothAdapter.ACTION_REQUEST_ENABLE;
-            startActivityForResult(new Intent(actionRequestEnable), 0);
+            String beDiscoverable = BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE;
+            startActivityForResult(new Intent(beDiscoverable), DISCOVERY_REQUEST);
         }
         flag_bt_on = check_bluetooth_status();
 
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("text/plain");
-        //i.setType("image/jpeg");
         File f = new File(Environment.getExternalStorageDirectory(), "contact_info1.vcf");
         i.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(f));
         PackageManager pm = getPackageManager();
@@ -139,6 +106,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void fct_disconnect_bt() {
-        btAdapter.disable();
+
+        Count = new CountDownTimer(3000, 500) {
+            // Action to check at every tic
+            public void onTick(long millisUntilFinished) {
+
+            }
+            // Reset of the game when the timeout goes to 0
+            public void onFinish() {
+                btAdapter.disable();
+            }
+        };
+
     }
 }

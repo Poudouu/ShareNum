@@ -9,4 +9,6 @@
     <string name="phone_number">Phone number:</string>
     <string name="email">Email address:</string>
     <string name="save_infos">Save</string>
+    <string name="close">Close</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 </resources>

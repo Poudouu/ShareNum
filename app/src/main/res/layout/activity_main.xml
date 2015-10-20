@@ -3,37 +3,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:background="#333333"
     tools:context=".MainActivity">
 
-    <TextView android:text="@string/bt_status"
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id">
+    </com.google.android.gms.ads.AdView>
+
+    <TextView android:text="Click to send your phone number!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="20dp"
         android:textColor="#ffffff"
         android:textSize="20sp"
-        android:id="@+id/bt_status" />
+        android:id="@+id/info_1" />
 
     <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
         android:text="@string/send_phone_number"
         android:id="@+id/bt_connect"
         android:onClick="send_file_in_bt"
-        android:layout_below="@+id/bt_status"
+        android:layout_below="@+id/info_1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="29dp" />
+        android:layout_marginTop="10dp" />
+
+    <TextView android:text="@string/bt_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/bt_connect"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/bt_status" />
+
+    <TextView android:text="Click to register you contact infos!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:layout_below="@+id/bt_status"
+        android:id="@+id/info_2" />
 
     <Button
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register datas"
         android:id="@+id/register_informations"
         android:onClick="fct_register_infos"
-        android:layout_below="@+id/bt_connect"
+        android:layout_below="@+id/info_2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp" />
+        android:layout_marginTop="5dp" />
 
 </RelativeLayout>
