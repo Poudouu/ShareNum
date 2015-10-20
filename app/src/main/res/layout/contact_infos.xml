@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#333333"
+    tools:context=".ContactInfos">
+
+
+    <TextView android:text="@string/first_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="5dp"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:id="@+id/firstNameString"/>
+
+    <EditText
+        android:inputType="text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:id="@+id/firstName"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/firstNameString"/>
+
+    <TextView android:text="@string/last_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="5dp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:id="@+id/lasNameString"
+        android:layout_below="@+id/firstName"/>
+
+    <EditText
+        android:inputType="text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:id="@+id/lastName"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/lasNameString"/>
+
+    <TextView android:text="@string/organisation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="5dp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:id="@+id/orgNameString"
+        android:layout_below="@+id/lastName"/>
+
+    <EditText
+        android:inputType="text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:id="@+id/orgName"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/orgNameString"/>
+
+    <TextView android:text="@string/phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="5dp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:id="@+id/phoneNumString"
+        android:layout_below="@+id/orgName"/>
+
+    <EditText
+        android:inputType="phone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:id="@+id/phoneNum"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/phoneNumString"/>
+
+    <TextView android:text="@string/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="5dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:id="@+id/emailString"
+        android:layout_below="@+id/phoneNum"/>
+
+    <EditText
+        android:inputType="textEmailAddress"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:id="@+id/email"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/emailString"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/save_infos"
+        android:id="@+id/save_infos"
+        android:onClick="register_infos"
+        android:layout_below="@+id/email"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp" />
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/close"
+        android:id="@+id/close_button"
+        android:onClick="close_screen"
+        android:layout_below="@+id/save_infos"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp" />
+</RelativeLayout>
