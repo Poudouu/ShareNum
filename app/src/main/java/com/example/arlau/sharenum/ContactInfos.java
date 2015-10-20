@@ -118,6 +118,8 @@ public class ContactInfos extends AppCompatActivity {
             String Cheval="";
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
+        }catch(java.lang.ArrayIndexOutOfBoundsException e){
+            e.printStackTrace();
         }
 
         //Write values in the file in the correct fields
